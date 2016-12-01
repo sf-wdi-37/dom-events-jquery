@@ -11,8 +11,8 @@ $(document).ready(function(){
   // }
 
   //////////// LINKS ////////////
-  var $links = $("a"); // every link on the page
-  // $links.on("click", function handleClick(event){
+  var links = $("a"); // every link on the page
+  // links.on("click", function handleClick(event){
   //   //event.preventDefault();
   //   alert("You just clicked a link!");
   // });
