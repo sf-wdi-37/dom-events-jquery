@@ -36,7 +36,7 @@ Most of the interactivity for JavaScript in the web is based around events.  The
 
 ![callback](http://i.giphy.com/xT8qBu5gOYEqHhgDQs.gif)
 
-A **callback** is a function that is passed into another function as an argument and then used. A function that can take in a callback as an argument is known as a **higher order function**.
+A **callback** is a function that is passed into another function as an argument and then called inside that other function. A function that can take in a callback as an argument is known as a **higher order function**.
 
 ```js
 
@@ -55,7 +55,7 @@ function splitItCallback(str){
 
 higherOrderFunction("Functions are fun!", shoutItCallback);
 
-higherOrderFunction("functions are fun!", splitItCallback);
+higherOrderFunction("Functions are fun!", splitItCallback);
 
 ```
 
@@ -185,30 +185,61 @@ In the last example:
 
 Open your developer console on [jQuery.com](https://jquery.com).
 
-Let's add some behavior for the scroll event for the entire window.  Try selecting the browser's `window` object using `$(window)`.
+Let's add some behavior for the scroll event for the entire window.  Try selecting the browser's `window` object using `$(window)`.  Note that the argument here is a variable, `window`, not a string `"window"`.  Chrome gives us direct access to the `window` much like we have access to the `document`. 
 
 1. Add an event listener to detect the "scroll" event for the window and `console.log` a message every time the event occurs.
 
   <details>
-    <summary>answer</summary>
+    <summary>answer in jQuery</summary>
     ```js
-    $(window).on("scroll", function handleScroll(){
+    $(window).on("scroll", logScroll);
+		
+		function logScroll(){
         console.log("just keep scrolling, scrolling, scrolling");
-    })
+    }
     ```
   </details>
+	
+	 <details>
+    <summary>vanilla JavaScript version</summary>
+    ```js
+		window.addEventListener("scroll", logScroll);
+		
+		function logScroll(){
+        console.log("just keep scrolling, scrolling, scrolling");
+    }
+    ```
+  </details>
+	
 
 2. Modify your event handler so it adds a new paragraph, `<p>to infinity... and beyond!</p>`, at the bottom of the page every time the user scrolls.
 
   <details>
-    <summary>answer</summary>
+    <summary>answer in jQuery</summary>
     ```js
-    $(window).on("scroll", function handleScroll(){
+    $(window).on("scroll", addParagraph);
+		
+		function addParagraph(){
         $("body").append("<p>to infinity... and beyond!</p>");
-    })
+    }
+    ```
+  </details>
+	
+	 <details>
+    <summary>vanilla JavaScript version</summary>
+    ```js
+		window.addEventListener("scroll", addParagraph);
+		
+		function addParagraph(){
+        var newParagraph = document.createElement("p");
+				newParagraph.textContent = "to infinity... and beyond!";
+				document.body.appendChild(newParagraph);
+    }
     ```
   </details>
  
+> Note: You can remove event listeners, too.  In vanilla JavaScript, you'd use the `removeEventListener` function. With jQuery, we can use `off`. 
+
 ### Checking that the DOM is Ready
 
 User actions can cause the browser to "emit" (send) some kinds of events, but the browser also emits extra events that might be useful for developers. The most important one is `DOMContentLoaded`, which gets sent when the browser is finished creating the Document Object Model. 
@@ -463,6 +494,6 @@ Practice with this event medley  [training](https://github.com/sf-wdi-34/jquery-
 
 * Practice selecting DOM elements. This can be done with native JavaScript language features, but we're mainly going to use jQuery library methods.
 
-* Remember, jQuery is a library, not a language.
+* Remember, jQuery is a library, not a language.  We use jQuery because it lets us write fewer lines of code - see [youmightnotneedjquery.com](http://youmightnotneedjquery.com/).
 
 * Events bubble; we can use this to our advantage!
