@@ -1,6 +1,6 @@
 <!--
 Creator: SF WDI Team
-Last Edited By: Jean
+Edited By: Jean, Brianna
 Location: SF
 -->
 
@@ -33,6 +33,95 @@ Most of the interactivity for JavaScript in the web is based around events.  The
 - Select DOM elements with jQuery.
 
 ### Aside: Callbacks
+
+#####Arguments
+
+A simple function lets us name some behavior (some sequence of code) and reuse it later. 
+
+```js
+function sayHelloAli(){
+   console.log("Hello, Ali!");
+}
+
+sayHelloAli();
+```
+
+We can make functions more flexible with arguments:
+
+```js
+function sayHello(name){
+   console.log("Hello, " + name + "!");
+}
+
+sayHello("Ali");
+sayHello("Mercedes");
+```
+
+Now we have a more flexible and reusable function. 
+
+We can make this even more flexible by passing in a function as an argument. 
+
+```js
+function doSomethingToSomeone(targetName, functionToDo){
+   console.log("You approach " + targetName + ".");  // higher order functions often add information or behaviors
+   functionToDo(targetName);
+};
+```
+
+Now, we have an even more flexible, reusable function.
+
+```
+doSomethingToSomeone("Ali", sayHello);
+
+// You approach Ali.
+// Hello, Ali!
+```
+
+##### Check for Understanding
+
+1. What will the console output be when you run the following code?
+
+	```js
+	function highFive(name){
+	  console.log("You send " + name + " a big high five!");
+	}
+
+	doSomethingToSomeone("Ali", highFive);
+	```
+
+	<details><summary>click to see console output</summary>
+	The following is logged to the console:
+	> You approach Ali.
+	> You send Ali a big high five!
+	</details>
+
+1. What will the console output be given the following code?
+
+  ```js
+	function attemptSomethingWithSomeone(targetName, functionToTry){
+		console.log("You approach " + targetName + ".");
+		functionToTry(targetName);
+		var success = Math.random();
+		if (success < 0.5) {
+		  console.log("It goes... okay.");
+		} else {
+		  console.log("It's awesome!");
+		}
+	}
+	
+	function highFive(name){
+	  console.log("You send " + name + " a big high five!");
+	}
+	
+	attemptSomethingWithSomeone("Mercedes", highFive);
+	```
+	
+	<details><summary>click for a possible outcome</summary>
+	The following might be logged to the console:
+	> You approach Mercedes.
+	> You send Mercedes a big high five!
+	> It goes... okay.
+	</details>
 
 ![callback](http://i.giphy.com/xT8qBu5gOYEqHhgDQs.gif)
 
@@ -155,6 +244,8 @@ Here's how this looks all together with "vanilla" or "native" JavaScript:
       alert("Yay!");
   }
 ```
+
+**Check for Understanding:** Where is this code above using a callback?
 
 When we've selected an element or elements with jQuery, we can use jQuery's `.on` method to add an event listener:
 
