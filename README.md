@@ -59,6 +59,8 @@ higherOrderFunction("Functions are fun!", splitItCallback);
 
 ```
 
+##### Callbacks & Iterator Methods
+
 The callback pattern is used a lot in JavaScript. As an example, `.forEach` is a built-in Array **iterator method** that takes in a callback.
 
 ```js
@@ -75,6 +77,9 @@ function isEven(num){
 }
 ```
 
+> When you use a jQuery selector like `$('p')`, the collection you get back isn't exactly the same as a native JavaScript array. To iterate over a jQuery collection, use jQuery's `.each` **iterator method**. Or, use the `eq` method to access one element by index: `$('p').eq(3)`.
+
+##### Callbacks & Anonymous Functions
 Often, the callback function definition is written inside the higher order function call.
 
 
@@ -92,9 +97,6 @@ numbers.forEach(function isEven(num){
 
 In these cases, the callback often won't be given a name.  A function without a name is called an **anonymous function**.
 
-> When you use a jQuery selector like `$('p')`, the collection you get back isn't exactly the same as a native JavaScript array. To iterate over a jQuery collection, use jQuery's `.each` iterator method.
-
-
 
 ### Events
 
@@ -102,7 +104,7 @@ In these cases, the callback often won't be given a name.  A function without a 
 
 ![Click Event](http://i.giphy.com/l0HlL2I8DbNa6JCJa.gif)
 
-In Chrome, we can use the following utility function to log some events occurring in the window:
+In Chrome, we can use the `monitorEvents` utility function to log some events occurring in the window:
 
 ```js
 monitorEvents(window, ["click", "keypress", "resize", "scroll"]);
@@ -239,6 +241,9 @@ Let's add some behavior for the scroll event for the entire window.  Try selecti
   </details>
  
 > Note: You can remove event listeners, too.  In vanilla JavaScript, you'd use the `removeEventListener` function. With jQuery, we can use `off`. 
+
+
+
 
 ### Checking that the DOM is Ready
 
@@ -396,6 +401,7 @@ var kitten = $("#kittenPic");
 kitten.on("click", function (event) {
     console.log(this);
     console.log(event.target);
+    console.log("target same as this?", this === event.target);
 });
 
 ```
@@ -403,14 +409,14 @@ kitten.on("click", function (event) {
 
 #### Event Bubbling
 
-This might seem very straightforward, but in reality the `event.target` is not always the only element that knows about the click.
+This might seem very straightforward, but in reality the `event.target` usually isn't the only element that knows about the event.
 
 
 `index.html`
 
 ```html
 <div id="kittenCon">
-    <img id="kittenPic" src="http://petnamesplace.com/wp-content/uploads/2009/12/kitten-names-copy.jpg"></img>
+    <img id="kittenPic" src="http://petnamesplace.com/wp-content/uploads/2009/12/kitten-names-copy.jpg">
 </div>
 ```
 
@@ -425,6 +431,7 @@ var kittenContainer = $("#kittenCon");
 kittenContainer.on("click", function (event) {
     console.log(this);
     console.log(event.target);
+    console.log("target same as this?", this === event.target);
 });
 
 ```
@@ -482,10 +489,6 @@ function toggleLongCon(event){
     $(event.target).toggleClass("long-box");
 }
 ```
-
-### Independent Practice
-
-Practice with this event medley  [training](https://github.com/sf-wdi-34/jquery-events-training).  
 
 
 ### Closing Thoughts
