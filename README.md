@@ -63,7 +63,8 @@ We can make this even more flexible by passing in a function as an argument.
 
 ```js
 function doSomethingToSomeone(targetName, functionToDo){
-   console.log("You approach " + targetName + ".");  // higher order functions often add information or behaviors
+   // higher order functions often add information or behaviors
+   console.log("You approach " + targetName + ".");  
    functionToDo(targetName);
 };
 ```
@@ -75,6 +76,17 @@ doSomethingToSomeone("Ali", sayHello);
 
 // You approach Ali.
 // Hello, Ali!
+```
+
+In ES6, you'll often see callbacks written with arrow functions.
+
+```
+doSomethingToSomeone("Patricia", (name) => {
+   console.log(`${name} rocks out!`);
+});
+
+// You approach Patricia.
+// Patricia rocks out!
 ```
 
 ##### Check for Understanding
@@ -185,6 +197,21 @@ numbers.forEach(function isEven(num){
 ```
 
 In these cases, the callback often won't be given a name.  A function without a name is called an **anonymous function**.
+
+Here's the ES6 arrow function version:
+
+```js
+var numbers = [123, 45, 0];
+numbers.forEach((num) => {
+	if (num % 2 === 0){
+		console.log(num + " is even!");
+		return true;
+	} else {
+		console.log(num + " is odd!");
+	}
+});
+```
+
 
 
 ### Events
