@@ -311,24 +311,24 @@ Let's add some behavior for the scroll event for the entire window.  Try selecti
 
   <details>
     <summary>answer in jQuery</summary>
-    ```js
+
     $(window).on("scroll", logScroll);
 		
 		function logScroll(){
         console.log("just keep scrolling, scrolling, scrolling");
     }
-    ```
+
   </details>
 	
 	 <details>
     <summary>vanilla JavaScript version</summary>
-    ```js
+
 		window.addEventListener("scroll", logScroll);
 		
 		function logScroll(){
         console.log("just keep scrolling, scrolling, scrolling");
     }
-    ```
+
   </details>
 	
 
@@ -336,26 +336,26 @@ Let's add some behavior for the scroll event for the entire window.  Try selecti
 
   <details>
     <summary>answer in jQuery</summary>
-    ```js
+
     $(window).on("scroll", addParagraph);
 		
 		function addParagraph(){
         $("body").append("<p>to infinity... and beyond!</p>");
     }
-    ```
+
   </details>
 	
 	 <details>
     <summary>vanilla JavaScript version</summary>
-    ```js
-		window.addEventListener("scroll", addParagraph);
+
+	window.addEventListener("scroll", addParagraph);
 		
-		function addParagraph(){
-        var newParagraph = document.createElement("p");
+	function addParagraph(){
+        	var newParagraph = document.createElement("p");
 				newParagraph.textContent = "to infinity... and beyond!";
 				document.body.appendChild(newParagraph);
     }
-    ```
+
   </details>
  
 > Note: You can remove event listeners, too.  In vanilla JavaScript, you'd use the `removeEventListener` function. With jQuery, we can use `off`. 
