@@ -34,7 +34,7 @@ Most of the interactivity for JavaScript in the web is based around events.  The
 
 ### Aside: Callbacks
 
-#####Arguments
+##### Arguments
 
 A simple function lets us name some behavior (some sequence of code) and reuse it later. 
 
@@ -265,7 +265,7 @@ $('#greeting').mouseover(popUpYay);
 
 The `.mouseover(...)` method is equivalent to `.on('mouseover', ...)`. We recommend using `.on` because it has some more flexibility through optional parameters. 
 
-####Check for Understanding
+#### Check for Understanding
 
 In the last example:
 
@@ -274,7 +274,7 @@ In the last example:
   * What is the action tied to this event?
   * When is the `popUpYay` function actually executed?
 
-####Check for Understanding
+#### Check for Understanding
 
 Open your developer console on [jQuery.com](https://jquery.com).
 
