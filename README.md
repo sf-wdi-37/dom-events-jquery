@@ -36,14 +36,14 @@ Most of the interactivity for JavaScript in the web is based around events.  The
 
 ##### Arguments
 
-A simple function lets us name some behavior (some sequence of code) and reuse it later. 
+A simple function lets us name some behavior (some sequence of code) and reuse it later.
 
 ```js
-function sayHelloAli(){
-   console.log("Hello, Ali!");
+function sayHelloEmily(){
+   console.log("Hello, Emily!");
 }
 
-sayHelloAli();
+sayHelloEmily();
 ```
 
 We can make functions more flexible with arguments:
@@ -53,13 +53,13 @@ function sayHello(name){
    console.log("Hello, " + name + "!");
 }
 
-sayHello("Ali");
-sayHello("Mercedes");
+sayHello("Emily");
+sayHello("Patricia");
 ```
 
-Now we have a more flexible and reusable function. 
+Now we have a more flexible and reusable function.
 
-We can make this even more flexible by passing in a function as an argument. 
+We can make this even more flexible by passing in a function as an argument.
 
 ```js
 function doSomethingToSomeone(targetName, functionToDo){
@@ -69,24 +69,13 @@ function doSomethingToSomeone(targetName, functionToDo){
 };
 ```
 
-Now, we have an even more flexible, reusable function.
+Now, we have an _even more_ flexible, reusable function.
 
 ```
-doSomethingToSomeone("Ali", sayHello);
+doSomethingToSomeone("Emily", sayHello);
 
-// You approach Ali.
-// Hello, Ali!
-```
-
-In ES6, you'll often see callbacks written with arrow functions.
-
-```
-doSomethingToSomeone("Patricia", (name) => {
-   console.log(`${name} rocks out!`);
-});
-
-// You approach Patricia.
-// Patricia rocks out!
+// You approach Emily.
+// Hello, Emily!
 ```
 
 ##### Check for Understanding
@@ -98,13 +87,13 @@ doSomethingToSomeone("Patricia", (name) => {
 	  console.log("You send " + name + " a big high five!");
 	}
 
-	doSomethingToSomeone("Ali", highFive);
+	doSomethingToSomeone("Emily", highFive);
 	```
 
 	<details><summary>click to see console output</summary>
 	The following is logged to the console:
-	> You approach Ali.
-	> You send Ali a big high five!
+	> You approach Emily.
+	> You send Emily a big high five!
 	</details>
 
 1. What will the console output be given the following code?
@@ -120,18 +109,18 @@ doSomethingToSomeone("Patricia", (name) => {
 		  console.log("It's awesome!");
 		}
 	}
-	
+
 	function highFive(name){
 	  console.log("You send " + name + " a big high five!");
 	}
-	
-	attemptSomethingWithSomeone("Mercedes", highFive);
+
+	attemptSomethingWithSomeone("Patricia", highFive);
 	```
-	
+
 	<details><summary>click for a possible outcome</summary>
 	The following might be logged to the console:
-	> You approach Mercedes.
-	> You send Mercedes a big high five!
+	> You approach Patricia.
+	> You send Patricia a big high five!
 	> It goes... okay.
 	</details>
 
@@ -290,7 +279,7 @@ Sometimes you will see this shorthand:
 $('#greeting').mouseover(popUpYay);
 ```
 
-The `.mouseover(...)` method is equivalent to `.on('mouseover', ...)`. We recommend using `.on` because it has some more flexibility through optional parameters. 
+The `.mouseover(...)` method is equivalent to `.on('mouseover', ...)`. We recommend using `.on` because it has some more flexibility through optional parameters.
 
 #### Check for Understanding
 
@@ -305,7 +294,7 @@ In the last example:
 
 Open your developer console on [jQuery.com](https://jquery.com).
 
-Let's add some behavior for the scroll event for the entire window.  Try selecting the browser's `window` object using `$(window)`.  Note that the argument here is a variable, `window`, not a string `"window"`.  Chrome gives us direct access to the `window` much like we have access to the `document`. 
+Let's add some behavior for the scroll event for the entire window.  Try selecting the browser's `window` object using `$(window)`.  Note that the argument here is a variable, `window`, not a string `"window"`.  Chrome gives us direct access to the `window` much like we have access to the `document`.
 
 1. Add an event listener to detect the "scroll" event for the window and `console.log` a message every time the event occurs.
 
@@ -313,24 +302,24 @@ Let's add some behavior for the scroll event for the entire window.  Try selecti
     <summary>answer in jQuery</summary>
 
     $(window).on("scroll", logScroll);
-		
+
 		function logScroll(){
         console.log("just keep scrolling, scrolling, scrolling");
     }
 
   </details>
-	
+
 	 <details>
     <summary>vanilla JavaScript version</summary>
 
 		window.addEventListener("scroll", logScroll);
-		
+
 		function logScroll(){
         console.log("just keep scrolling, scrolling, scrolling");
     }
 
   </details>
-	
+
 
 2. Modify your event handler so it adds a new paragraph, `<p>to infinity... and beyond!</p>`, at the bottom of the page every time the user scrolls.
 
@@ -338,18 +327,18 @@ Let's add some behavior for the scroll event for the entire window.  Try selecti
     <summary>answer in jQuery</summary>
 
     $(window).on("scroll", addParagraph);
-		
+
 		function addParagraph(){
         $("body").append("<p>to infinity... and beyond!</p>");
     }
 
   </details>
-	
+
 	 <details>
     <summary>vanilla JavaScript version</summary>
 
 	window.addEventListener("scroll", addParagraph);
-		
+
 	function addParagraph(){
         	var newParagraph = document.createElement("p");
 				newParagraph.textContent = "to infinity... and beyond!";
@@ -357,22 +346,22 @@ Let's add some behavior for the scroll event for the entire window.  Try selecti
     }
 
   </details>
- 
-> Note: You can remove event listeners, too.  In vanilla JavaScript, you'd use the `removeEventListener` function. With jQuery, we can use `off`. 
+
+> Note: You can remove event listeners, too.  In vanilla JavaScript, you'd use the `removeEventListener` function. With jQuery, we can use `off`.
 
 
 
 
 ### Checking that the DOM is Ready
 
-User actions can cause the browser to "emit" (send) some kinds of events, but the browser also emits extra events that might be useful for developers. The most important one is `DOMContentLoaded`, which gets sent when the browser is finished creating the Document Object Model. 
+User actions can cause the browser to "emit" (send) some kinds of events, but the browser also emits extra events that might be useful for developers. The most important one is `DOMContentLoaded`, which gets sent when the browser is finished creating the Document Object Model.
 
 Before the `DOMContentLoaded` event occurs, the browser is still working on tasks like deciding which CSS rules apply to particular HTML elements.  Before the `DOMContentLoaded` event occurs, the DOM elements aren't on the page yet.  So if you try to select a DOM element before that event, it won't be there!
 
 **Any code that relies on DOM elements being ready MUST happen after the `DOMContentLoaded` event!**
 
 
-We can get around this by putting `<script>` tags at very the bottom of the body, because by the time the browser is working on the bottom of the body we can expect the rest of the content is loaded.  However, you'll often see `<script>` tags listed in the head of an HTML file.  In that case, it's important to explicitly listen for the `DOMContentLoaded` event! 
+We can get around this by putting `<script>` tags at very the bottom of the body, because by the time the browser is working on the bottom of the body we can expect the rest of the content is loaded.  However, you'll often see `<script>` tags listed in the head of an HTML file.  In that case, it's important to explicitly listen for the `DOMContentLoaded` event!
 
 In jQuery, there's a method to check if the DOM is ready. It relies mostly on the `DOMContentLoaded` event, but as a bonus it also accounts for some other specific events used by older browsers.  The jQuery method we use is `ready`, and we apply it to the document in a way that looks like jQuery event handling shorthand:
 
@@ -383,9 +372,9 @@ In jQuery, there's a method to check if the DOM is ready. It relies mostly on th
 $(document).ready(function(){
     // code in here DOES wait for DOM to be ready
     // best place for DOM element selectors
-    // best place to *call* functions that interact with the DOM 
+    // best place to *call* functions that interact with the DOM
     var greeting = $('#greeting');
-	greeting.on('mouseover', popUpYay);
+	  greeting.on('mouseover', popUpYay);
 });
 
 // code down here does not wait for DOM to be ready
@@ -393,7 +382,7 @@ $(document).ready(function(){
 function popUpYay(event){
     alert('Yay!');
     // DOM interaction is planned here - but only gets executed when function is called
-    $('body').append('Yay!'); 
+    $('body').append('Yay!');
 }
 ```
 
@@ -409,8 +398,8 @@ Here's part of a site's `index.html`:
 	<li>2</li>
 	<li class="featured">3</li>
 </ul>
-``` 
-  
+```
+
 Assume the JavaScript file below is linked with a `<script>` tag in the head of `index.html`.  What mistake(s) do you see in the code below?
 
 `app.js`
@@ -433,10 +422,10 @@ function updateFeaturedClickCount(){
 
 <details>
 <summary>answer</summary>
-The only issue is that the text inside the `#click-count` span doesn't initially show 0. The line that tries to make this change, `$('#click-count').text('0');` happens outside `$(document).ready(/* ... */)`, which means it happens before the span is loaded into the DOM. 
+The only issue is that the text inside the `#click-count` span doesn't initially show 0. The line that tries to make this change, `$('#click-count').text('0');` happens outside `$(document).ready(/* ... */)`, which means it happens before the span is loaded into the DOM.
 
 Here's a version that works:
-  
+
 `app.js`
 
 ```js
@@ -527,7 +516,7 @@ kitten.on("click", function (event) {
 
 #### Event Bubbling
 
-This might seem very straightforward, but in reality the `event.target` usually isn't the only element that knows about the event.
+This might seem very straightforward, but in reEmilyty the `event.target` usually isn't the only element that knows about the event.
 
 
 `index.html`
@@ -556,7 +545,22 @@ kittenContainer.on("click", function (event) {
 
 Note that that when we click the image we also click anything containing the image - the `#kittenCon` `<div>`, the `<body>`, the whole `document` and `window` objects.
 
-###Event Delegation
+
+ES6 arrow functions "bind" their context to them. Check out any differences between the last code sample and this one:
+
+```js
+// ES6
+const kittenContainer = $("#kittenCon");
+
+kittenContainer.on("click", (event) => {
+    console.log(this);
+    console.log(event.target);
+    console.log("target same as this?", this === event.target);
+});
+
+```
+
+### Event Delegation
 
 Event bubbling enables a tactic called event delegation - attaching an event listener to a parent element when we actually want to listen for events on its children.  
 
