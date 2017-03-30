@@ -22,7 +22,7 @@ Most of the interactivity for JavaScript in the web is based around events.  The
 - Attach event listeners to DOM elements.
 - Target the source of an event.
 - Respond to events with a callback.
-- Explain event propagation.
+- use event delgation to taget elements added after page load.
 
 ### Where should we be now?
 <!-- call out the skills that are prerequisites -->
