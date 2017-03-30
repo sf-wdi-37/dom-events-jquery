@@ -6,16 +6,25 @@ $(document).ready(function(){
   //////////// HELLO SPAN ////////////
   var greeting = $('#greeting');
   // greeting.on('mouseover', popUpYay);
+  //
   // function popUpYay(event){
   //   alert('Yay!');
   // }
 
   //////////// LINKS ////////////
+  // es5
   var links = $("a"); // every link on the page
   // links.on("click", function handleClick(event){
-  //   //event.preventDefault();
+  //   event.preventDefault();
   //   alert("You just clicked a link!");
   // });
+
+  // es6
+  // let links = $("a");
+  // links.on("click", (event) => {
+  //   event.preventDefault();
+  //   alert("You just clicked a link!");
+  // })
 
   //////////// KITTEN ////////////
 
@@ -47,18 +56,23 @@ $(document).ready(function(){
 
   // setTimeout to add a delay before execution
   // the box isn't on the page when the DOM is first ready
-  // window.setTimeout(addBox, 3000);
+  window.setTimeout(addBox, 3000);
 
   // doesn't work! too early!
   // $(".box").on("click", toggleLongBox);
 
   // does work!
-  // $("#box-container").on("click", ".box", toggleLongCon);
+  // $("#box-container").on("click", ".box", toggleLongFromContainer);
 
 
 
 });
 
+// these functions can be *defined outside*
+//   the $(document).ready callback
+//   (even though they access the DOM)
+//   because they're only *called inside*
+//   the $(document).ready callback
 function addBox(){
   console.log("adding a box!");
   newBox = $('<div class="box"></div>');
@@ -69,6 +83,6 @@ function toggleLongBox(event){
   $(this).toggleClass("long-box");
 }
 
-function toggleLongCon(event){
+function toggleLongFromContainer(event){
   $(event.target).toggleClass("long-box");
 }
