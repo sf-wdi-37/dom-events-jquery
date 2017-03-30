@@ -92,37 +92,44 @@ doSomethingToSomeone("Emily", sayHello);
 
 	<details><summary>click to see console output</summary>
 	The following is logged to the console:
+	
 	> You approach Emily.
+	
 	> You send Emily a big high five!
 	</details>
 
 1. What will the console output be given the following code?
 
-  ```js
-	function attemptSomethingWithSomeone(targetName, functionToTry){
-		console.log("You approach " + targetName + ".");
-		functionToTry(targetName);
-		var success = Math.random();
-		if (success < 0.5) {
-		  console.log("It goes... okay.");
-		} else {
-		  console.log("It's awesome!");
-		}
+```js
+function attemptSomethingWithSomeone(targetName, functionToTry){
+	console.log("You approach " + targetName + ".");
+	functionToTry(targetName);
+	var success = Math.random();
+	if (success < 0.5) {
+	  console.log("It goes... okay.");
+	} else {
+	  console.log("It's awesome!");
 	}
+}
 
-	function highFive(name){
-	  console.log("You send " + name + " a big high five!");
-	}
+function highFive(name){
+  console.log("You send " + name + " a big high five!");
+}
 
-	attemptSomethingWithSomeone("Patricia", highFive);
-	```
+attemptSomethingWithSomeone("Patricia", highFive);
+```
 
-	<details><summary>click for a possible outcome</summary>
-	The following might be logged to the console:
-	> You approach Patricia.
-	> You send Patricia a big high five!
-	> It goes... okay.
-	</details>
+<details><summary>click for a possible outcome</summary>
+
+The following might be logged to the console:
+
+> You approach Patricia.
+
+> You send Patricia a big high five!
+
+> It goes... okay.
+
+</details>
 
 ![callback](http://i.giphy.com/xT8qBu5gOYEqHhgDQs.gif)
 
@@ -298,54 +305,54 @@ Let's add some behavior for the scroll event for the entire window.  Try selecti
 
 1. Add an event listener to detect the "scroll" event for the window and `console.log` a message every time the event occurs.
 
-  <details>
-    <summary>answer in jQuery</summary>
+	  <details>
+	    <summary>answer in jQuery</summary>
 
-    $(window).on("scroll", logScroll);
+	    $(window).on("scroll", logScroll);
 
-		function logScroll(){
-        console.log("just keep scrolling, scrolling, scrolling");
-    }
+	    function logScroll(){
+		console.log("just keep scrolling, scrolling, scrolling");
+	    }
 
-  </details>
+	  </details>
 
 	 <details>
-    <summary>vanilla JavaScript version</summary>
+	    <summary>vanilla JavaScript version</summary>
 
 		window.addEventListener("scroll", logScroll);
 
 		function logScroll(){
-        console.log("just keep scrolling, scrolling, scrolling");
-    }
+			console.log("just keep scrolling, scrolling, scrolling");
+		}
 
-  </details>
+	  </details>
 
 
 2. Modify your event handler so it adds a new paragraph, `<p>to infinity... and beyond!</p>`, at the bottom of the page every time the user scrolls.
 
-  <details>
-    <summary>answer in jQuery</summary>
+	  <details>
+	    <summary>answer in jQuery</summary>
 
-    $(window).on("scroll", addParagraph);
+	    $(window).on("scroll", addParagraph);
 
-		function addParagraph(){
-        $("body").append("<p>to infinity... and beyond!</p>");
-    }
+	    function addParagraph(){
+		$("body").append("<p>to infinity... and beyond!</p>");
+	    }
 
-  </details>
+	  </details>
 
 	 <details>
-    <summary>vanilla JavaScript version</summary>
+	    <summary>vanilla JavaScript version</summary>
 
-	window.addEventListener("scroll", addParagraph);
+		window.addEventListener("scroll", addParagraph);
 
-	function addParagraph(){
-        	var newParagraph = document.createElement("p");
-				newParagraph.textContent = "to infinity... and beyond!";
-				document.body.appendChild(newParagraph);
-    }
+		function addParagraph(){
+			var newParagraph = document.createElement("p");
+			newParagraph.textContent = "to infinity... and beyond!";
+			document.body.appendChild(newParagraph);
+	    	}
 
-  </details>
+	  </details>
 
 > Note: You can remove event listeners, too.  In vanilla JavaScript, you'd use the `removeEventListener` function. With jQuery, we can use `off`.
 
